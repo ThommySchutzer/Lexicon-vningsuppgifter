@@ -1,4 +1,4 @@
-# Övningsuppgift3 - Personal Website
+# Övningsuppgift - Personal Website
 
 Här borde jag kanske skriva om (länka till) tutorials som man kollade på för att få det gjort, nån cred borde de ju ha, skall skärpa mig framöver :)
 
