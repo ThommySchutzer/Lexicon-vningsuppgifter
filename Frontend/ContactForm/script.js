@@ -47,9 +47,6 @@ form.addEventListener("submit", function (event) {
   } else if (!password.validity.valid) {
     showPasswordError();
   } else {
-    //spara värdena (mail&password)
-    //sätt prevent default
-    //confirmera med alert istället
     saveAndConfirm();
     alert("Tack för registrering!");
     document.forms[0].reset();
