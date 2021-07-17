@@ -1,4 +1,4 @@
-# Lexicon-vningsuppgifter
+# Övningsuppgift 3 - Personal Website
 
 Här borde jag kanske skriva om (länka till) tutorials som man kollade på för att få det gjort, nån cred borde de ju ha, skall skärpa mig framöver :)
 
