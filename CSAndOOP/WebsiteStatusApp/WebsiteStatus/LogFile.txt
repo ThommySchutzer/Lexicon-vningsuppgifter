@@ -1,0 +1,82 @@
+2021-07-27 12:08:48.631 +02:00 [INF] Starting up the service
+2021-07-27 12:08:52.996 +02:00 [INF] The website is up. Status code "OK"
+2021-07-27 12:08:55.181 +02:00 [INF] The service has been stopped...
+2021-07-27 12:12:34.390 +02:00 [INF] Starting up the service
+2021-07-27 12:12:38.736 +02:00 [INF] The website is up. Status code "OK"
+2021-07-27 12:12:44.390 +02:00 [INF] The website is up. Status code "OK"
+2021-07-27 12:12:50.146 +02:00 [INF] The website is up. Status code "OK"
+2021-07-27 12:12:55.462 +02:00 [INF] The website is up. Status code "OK"
+2021-07-27 12:12:58.677 +02:00 [INF] The service has been stopped...
+2021-07-27 12:15:24.683 +02:00 [INF] Starting up the service
+2021-07-27 12:15:28.598 +02:00 [INF] The website is up. Status code "OK"
+2021-07-27 12:15:29.237 +02:00 [INF] The service has been stopped...
+2021-07-27 12:16:28.695 +02:00 [INF] Starting up the service
+2021-07-27 12:16:32.344 +02:00 [INF] The website is up. Status code "OK", 29
+2021-07-27 12:16:34.683 +02:00 [INF] The service has been stopped...
+2021-07-27 12:22:10.218 +02:00 [INF] Starting up the service
+2021-07-27 12:22:13.627 +02:00 [INF] The website is up. Status code "OK", 70
+2021-07-27 12:22:18.926 +02:00 [INF] The website is up. Status code "OK", 74
+2021-07-27 12:22:22.551 +02:00 [INF] The service has been stopped...
+2021-07-27 12:38:42.640 +02:00 [INF] Starting up the service
+2021-07-27 12:38:44.612 +02:00 [INF] The website is up. Status code "OK", 25
+2021-07-27 12:38:48.758 +02:00 [INF] The service has been stopped...
+2021-07-27 12:39:41.553 +02:00 [INF] Starting up the service
+2021-07-27 12:39:44.740 +02:00 [INF] The website is up. Status code "OK", 12
+2021-07-27 12:39:50.188 +02:00 [INF] The website is up. Status code "OK", 82
+2021-07-27 12:39:55.841 +02:00 [INF] The website is up. Status code "OK", 96
+2021-07-27 12:39:56.636 +02:00 [INF] The service has been stopped...
+2021-07-27 12:40:26.880 +02:00 [INF] Starting up the service
+2021-07-27 12:40:29.596 +02:00 [INF] The website is up. Status code "OK", 6
+2021-07-27 12:40:34.933 +02:00 [INF] The website is up. Status code "OK", 6
+2021-07-27 12:40:40.187 +02:00 [INF] The website is up. Status code "OK", 93
+2021-07-27 12:40:41.633 +02:00 [INF] The service has been stopped...
+2021-07-27 12:41:22.345 +02:00 [INF] Starting up the service
+2021-07-27 12:41:25.432 +02:00 [INF] The website is up. Status code {}, {}
+2021-07-27 12:41:31.087 +02:00 [INF] The website is up. Status code {}, {}
+2021-07-27 12:41:35.596 +02:00 [INF] The service has been stopped...
+2021-07-27 12:42:33.468 +02:00 [INF] Starting up the service
+2021-07-27 12:42:36.638 +02:00 [INF] The website is up. Status code "OK", 38
+2021-07-27 12:42:41.905 +02:00 [INF] The website is up. Status code "OK", 60
+2021-07-27 12:42:47.205 +02:00 [INF] The website is up. Status code "OK", 70
+2021-07-27 12:42:52.508 +02:00 [INF] The website is up. Status code "OK", 98
+2021-07-27 12:42:58.038 +02:00 [INF] The website is up. Status code "OK", 3
+2021-07-27 12:43:03.444 +02:00 [INF] The website is up. Status code "OK", 17
+2021-07-27 12:43:08.879 +02:00 [INF] The website is up. Status code "OK", 64
+2021-07-27 12:43:14.218 +02:00 [INF] The website is up. Status code "OK", 94
+2021-07-27 12:43:19.481 +02:00 [INF] The website is up. Status code "OK", 97
+2021-07-27 12:43:20.839 +02:00 [INF] The service has been stopped...
+2021-07-27 12:45:01.548 +02:00 [INF] Starting up the service
+2021-07-27 12:45:04.738 +02:00 [INF] The website is up. Status code "OK". And this moments secret number is 17
+2021-07-27 12:45:10.034 +02:00 [INF] The website is up. Status code "OK". And this moments secret number is 63
+2021-07-27 12:45:15.333 +02:00 [INF] The website is up. Status code "OK". And this moments secret number is 68
+2021-07-27 12:45:20.663 +02:00 [INF] The website is up. Status code "OK". And this moments secret number is 78
+2021-07-27 12:45:26.044 +02:00 [INF] The website is up. Status code "OK". And this moments secret number is 51
+2021-07-27 12:45:31.433 +02:00 [INF] The website is up. Status code "OK". And this moments secret number is 30
+2021-07-27 12:45:36.733 +02:00 [INF] The website is up. Status code "OK". And this moments secret number is 3
+2021-07-27 12:45:42.375 +02:00 [INF] The website is up. Status code "OK". And this moments secret number is 82
+2021-07-27 12:45:47.687 +02:00 [INF] The website is up. Status code "OK". And this moments secret number is 20
+2021-07-27 12:45:53.316 +02:00 [INF] The website is up. Status code "OK". And this moments secret number is 86
+2021-07-27 12:45:58.604 +02:00 [INF] The website is up. Status code "OK". And this moments secret number is 44
+2021-07-27 12:46:03.903 +02:00 [INF] The website is up. Status code "OK". And this moments secret number is 74
+2021-07-27 12:46:09.417 +02:00 [INF] The website is up. Status code "OK". And this moments secret number is 51
+2021-07-27 12:46:14.753 +02:00 [INF] The website is up. Status code "OK". And this moments secret number is 60
+2021-07-27 12:46:20.093 +02:00 [INF] The website is up. Status code "OK". And this moments secret number is 12
+2021-07-27 12:46:25.413 +02:00 [INF] The website is up. Status code "OK". And this moments secret number is 75
+2021-07-27 12:46:30.714 +02:00 [INF] The website is up. Status code "OK". And this moments secret number is 61
+2021-07-27 12:46:36.000 +02:00 [INF] The website is up. Status code "OK". And this moments secret number is 85
+2021-07-27 12:46:41.275 +02:00 [INF] The website is up. Status code "OK". And this moments secret number is 75
+2021-07-27 12:46:45.249 +02:00 [INF] The service has been stopped...
+2021-07-27 12:52:34.341 +02:00 [INF] Starting up the service
+2021-07-27 12:52:38.520 +02:00 [INF] The website is up. Status code "OK". And this moments secret number is 73
+2021-07-27 12:52:43.853 +02:00 [INF] The website is up. Status code "OK". And this moments secret number is 68
+2021-07-27 12:52:49.134 +02:00 [INF] The website is up. Status code "OK". And this moments secret number is 3
+2021-07-27 12:52:50.481 +02:00 [INF] The service has been stopped...
+2021-07-27 12:53:29.389 +02:00 [INF] Starting up the service
+2021-07-27 12:53:32.510 +02:00 [INF] The website is up. Status code "OK". And this moments secret number is 54
+2021-07-27 12:53:37.977 +02:00 [INF] The website is up. Status code "OK". And this moments secret number is 30
+2021-07-27 12:53:43.321 +02:00 [INF] The website is up. Status code "OK". And this moments secret number is 8
+2021-07-27 12:53:45.470 +02:00 [INF] The service has been stopped...
+2021-07-27 13:38:51.563 +02:00 [INF] Starting up the service
+2021-07-27 13:38:55.843 +02:00 [INF] The website is up. Status code "OK". And this moments secret number is 27
+2021-07-27 13:39:01.240 +02:00 [INF] The website is up. Status code "OK". And this moments secret number is 4
+2021-07-27 13:39:04.791 +02:00 [INF] The service has been stopped...
