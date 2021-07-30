@@ -1,0 +1,11 @@
+C:\Users\tillt\source\repos\TestingDemo\DemoLibrary\bin\Debug\DemoLibrary.dll
+C:\Users\tillt\source\repos\TestingDemo\DemoLibrary\bin\Debug\DemoLibrary.pdb
+C:\Users\tillt\source\repos\TestingDemo\DemoLibrary\obj\Debug\DemoLibrary.csproj.CoreCompileInputs.cache
+C:\Users\tillt\source\repos\TestingDemo\DemoLibrary\obj\Debug\DemoLibrary.dll
+C:\Users\tillt\source\repos\TestingDemo\DemoLibrary\obj\Debug\DemoLibrary.pdb
+C:\Users\tillt\source\repos\UnitTests\TestingDemo\DemoLibrary\bin\Debug\DemoLibrary.dll
+C:\Users\tillt\source\repos\UnitTests\TestingDemo\DemoLibrary\bin\Debug\DemoLibrary.pdb
+C:\Users\tillt\source\repos\UnitTests\TestingDemo\DemoLibrary\obj\Debug\DemoLibrary.csproj.AssemblyReference.cache
+C:\Users\tillt\source\repos\UnitTests\TestingDemo\DemoLibrary\obj\Debug\DemoLibrary.csproj.CoreCompileInputs.cache
+C:\Users\tillt\source\repos\UnitTests\TestingDemo\DemoLibrary\obj\Debug\DemoLibrary.dll
+C:\Users\tillt\source\repos\UnitTests\TestingDemo\DemoLibrary\obj\Debug\DemoLibrary.pdb
