@@ -1,0 +1,44 @@
+C:\Users\tillt\source\repos\Modern UI\Modern UI\bin\Debug\net5.0-windows\Modern UI.exe
+C:\Users\tillt\source\repos\Modern UI\Modern UI\bin\Debug\net5.0-windows\Modern UI.deps.json
+C:\Users\tillt\source\repos\Modern UI\Modern UI\bin\Debug\net5.0-windows\Modern UI.runtimeconfig.json
+C:\Users\tillt\source\repos\Modern UI\Modern UI\bin\Debug\net5.0-windows\Modern UI.runtimeconfig.dev.json
+C:\Users\tillt\source\repos\Modern UI\Modern UI\bin\Debug\net5.0-windows\Modern UI.dll
+C:\Users\tillt\source\repos\Modern UI\Modern UI\bin\Debug\net5.0-windows\ref\Modern UI.dll
+C:\Users\tillt\source\repos\Modern UI\Modern UI\bin\Debug\net5.0-windows\Modern UI.pdb
+C:\Users\tillt\source\repos\Modern UI\Modern UI\obj\Debug\net5.0-windows\Modern UI.csproj.AssemblyReference.cache
+C:\Users\tillt\source\repos\Modern UI\Modern UI\obj\Debug\net5.0-windows\MainWindow.g.cs
+C:\Users\tillt\source\repos\Modern UI\Modern UI\obj\Debug\net5.0-windows\App.g.cs
+C:\Users\tillt\source\repos\Modern UI\Modern UI\obj\Debug\net5.0-windows\Modern UI_MarkupCompile.cache
+C:\Users\tillt\source\repos\Modern UI\Modern UI\obj\Debug\net5.0-windows\Modern UI_MarkupCompile.lref
+C:\Users\tillt\source\repos\Modern UI\Modern UI\obj\Debug\net5.0-windows\MainWindow.baml
+C:\Users\tillt\source\repos\Modern UI\Modern UI\obj\Debug\net5.0-windows\Modern UI.g.resources
+C:\Users\tillt\source\repos\Modern UI\Modern UI\obj\Debug\net5.0-windows\Modern UI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\tillt\source\repos\Modern UI\Modern UI\obj\Debug\net5.0-windows\Modern UI.AssemblyInfoInputs.cache
+C:\Users\tillt\source\repos\Modern UI\Modern UI\obj\Debug\net5.0-windows\Modern UI.AssemblyInfo.cs
+C:\Users\tillt\source\repos\Modern UI\Modern UI\obj\Debug\net5.0-windows\Modern UI.csproj.CoreCompileInputs.cache
+C:\Users\tillt\source\repos\Modern UI\Modern UI\obj\Debug\net5.0-windows\Modern UI.dll
+C:\Users\tillt\source\repos\Modern UI\Modern UI\obj\Debug\net5.0-windows\ref\Modern UI.dll
+C:\Users\tillt\source\repos\Modern UI\Modern UI\obj\Debug\net5.0-windows\Modern UI.pdb
+C:\Users\tillt\source\repos\Modern UI\Modern UI\obj\Debug\net5.0-windows\Modern UI.genruntimeconfig.cache
+C:\Users\tillt\source\repos\WPF\Modern UI\Modern UI\bin\Debug\net5.0-windows\Modern UI.exe
+C:\Users\tillt\source\repos\WPF\Modern UI\Modern UI\bin\Debug\net5.0-windows\Modern UI.deps.json
+C:\Users\tillt\source\repos\WPF\Modern UI\Modern UI\bin\Debug\net5.0-windows\Modern UI.runtimeconfig.json
+C:\Users\tillt\source\repos\WPF\Modern UI\Modern UI\bin\Debug\net5.0-windows\Modern UI.runtimeconfig.dev.json
+C:\Users\tillt\source\repos\WPF\Modern UI\Modern UI\bin\Debug\net5.0-windows\Modern UI.dll
+C:\Users\tillt\source\repos\WPF\Modern UI\Modern UI\bin\Debug\net5.0-windows\ref\Modern UI.dll
+C:\Users\tillt\source\repos\WPF\Modern UI\Modern UI\bin\Debug\net5.0-windows\Modern UI.pdb
+C:\Users\tillt\source\repos\WPF\Modern UI\Modern UI\obj\Debug\net5.0-windows\Modern UI.csproj.AssemblyReference.cache
+C:\Users\tillt\source\repos\WPF\Modern UI\Modern UI\obj\Debug\net5.0-windows\MainWindow.g.cs
+C:\Users\tillt\source\repos\WPF\Modern UI\Modern UI\obj\Debug\net5.0-windows\App.g.cs
+C:\Users\tillt\source\repos\WPF\Modern UI\Modern UI\obj\Debug\net5.0-windows\Modern UI_MarkupCompile.cache
+C:\Users\tillt\source\repos\WPF\Modern UI\Modern UI\obj\Debug\net5.0-windows\Modern UI_MarkupCompile.lref
+C:\Users\tillt\source\repos\WPF\Modern UI\Modern UI\obj\Debug\net5.0-windows\MainWindow.baml
+C:\Users\tillt\source\repos\WPF\Modern UI\Modern UI\obj\Debug\net5.0-windows\Modern UI.g.resources
+C:\Users\tillt\source\repos\WPF\Modern UI\Modern UI\obj\Debug\net5.0-windows\Modern UI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\tillt\source\repos\WPF\Modern UI\Modern UI\obj\Debug\net5.0-windows\Modern UI.AssemblyInfoInputs.cache
+C:\Users\tillt\source\repos\WPF\Modern UI\Modern UI\obj\Debug\net5.0-windows\Modern UI.AssemblyInfo.cs
+C:\Users\tillt\source\repos\WPF\Modern UI\Modern UI\obj\Debug\net5.0-windows\Modern UI.csproj.CoreCompileInputs.cache
+C:\Users\tillt\source\repos\WPF\Modern UI\Modern UI\obj\Debug\net5.0-windows\Modern UI.dll
+C:\Users\tillt\source\repos\WPF\Modern UI\Modern UI\obj\Debug\net5.0-windows\ref\Modern UI.dll
+C:\Users\tillt\source\repos\WPF\Modern UI\Modern UI\obj\Debug\net5.0-windows\Modern UI.pdb
+C:\Users\tillt\source\repos\WPF\Modern UI\Modern UI\obj\Debug\net5.0-windows\Modern UI.genruntimeconfig.cache
