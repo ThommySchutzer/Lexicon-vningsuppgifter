@@ -1,0 +1,74 @@
+﻿<Window x:Class="WPFNotes.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFNotes"
+        mc:Ignorable="d"
+        Title="FeedbackPanel" Height="625" Width="600">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0">
+            <StackPanel Orientation="Vertical"
+                        Width="275" Height="275" Margin="10">
+                <TextBlock Text="Register Customer" TextWrapping="Wrap"/>
+                <TextBox x:Name="newCustomer" Text="" TextWrapping="Wrap"/>
+                <Button x:Name="btnAdd" Content="Register" Width="70" 
+                    Click="btnAdd_Click"/>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1">
+            <StackPanel Orientation="Vertical"
+                    Width="275" Height="275" Margin="10">
+                <TextBlock Text="Customer" TextWrapping="Wrap"/>
+                <TextBox x:Name="customer" Text="" TextWrapping="Wrap"/>
+                <TextBlock Text="Feedback" TextWrapping="Wrap"/>
+                <TextBox x:Name="feedback" Text="" TextWrapping="Wrap"
+                         Height="100"/>
+                <Button x:Name="btnPush" Content="Send Feedback" 
+                        Click="btnPush_Click" Width="100"/>
+                
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="0">
+            <StackPanel Orientation="Vertical"
+                        Width="275" Height="275" Margin="10">
+                <TextBlock Text="Customer" TextWrapping="Wrap"/>
+                <TextBox x:Name="historyName" Text="" TextWrapping="Wrap"/>
+                <Button x:Name="btnHistory" Content="Check History" 
+                        Click="btnHistory_Click" Width="100"/>
+                <ListBox x:Name="listBox2" Height="100"/>
+            </StackPanel>
+        </StackPanel>
+        
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
+            
+            <StackPanel Orientation="Vertical"
+                    Width="275" Height="275" Margin="10">
+                <Button x:Name="btnLatestCase" Content="Get Latest Case"
+                            Click="btnLatestCase_Click" Width="90"/>
+                <ListBox x:Name="listBox3" Height="150"/>
+                <TextBlock Text="Action" TextWrapping="Wrap" Margin="117,0,0,0"/>
+                
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Name="btnSomething" Content="Do Something"
+                            Click="btnSomething_Click" Width="90"
+                                Margin="40,0,10,0"/>
+                        <Button x:Name="btnNothing" Content="Do Nothing"
+                            Click="btnNothing_Click" Width="90"/>
+                    </StackPanel>
+                
+            </StackPanel>
+        
+        </StackPanel>
+        
+    </Grid>
+</Window>
