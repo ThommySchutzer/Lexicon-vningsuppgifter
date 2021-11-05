@@ -1,0 +1,131 @@
+﻿@page "/product/{id}"
+<!-- Local Storage -->
+@inject Blazored.LocalStorage.ILocalStorageService oLocalStore
+@inject IProductService productService
+
+<h3>Product Detail</h3>
+
+<div class="card" style="width:1200px; height:450px;">
+    <div class="row">
+        <div class="col-sm-6" style="display: flex; padding-right: 40px;">
+            <div class="col-sm-10">
+                <img src="@currentBigPicture" />
+            </div>
+            <div class="col-sm-2" style="display:block;">
+                <img src="@product.Image5" @onclick="@(e => BigPicture(1))" />
+                <img src="@product.Image6" @onclick="@(e => BigPicture(2))" />
+                <img src="@product.Image7" @onclick="@(e => BigPicture(3))" />
+                <img src="@product.Image8" @onclick="@(e => BigPicture(4))" />
+            </div>
+        </div>
+        <div class="col-sm-6" style="padding-left: 40px;">
+            <div>
+                <h5>@product.Name</h5>
+                <p>@product.Description</p>
+                <hr />
+                <div class="row">
+                    <div>
+                        <span>@product.Price.ToString("c")</span>
+                        <span>Price2</span>
+                        <img src="Icons/In stock.png" />
+                        <img src="Icons/In stock-1.png" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div>
+                        <label for="quantity">Quantity: </label>
+                        <input type="number" id="quantity" name="quantity" step="1" style="width:60px;" @bind="@product.Quantity">
+                        <img src="Icons/Add to Cart.png" @onclick="@(e => Save())" />
+                        <img src="Icons/Compare icon.png" />
+                        <img src="Icons/Heart icon.png" />
+                    </div>
+                </div>
+                <div class="row">
+                    <label for="color">Choose Color:</label>
+                    <select name="color" id="color" @bind="chosenColor">
+                        <option value="@product.Colors[0]">@product.Colors[0]</option>
+                        <option value="@product.Colors[1]">@product.Colors[1]</option>
+                        <option value="@product.Colors[2]">@product.Colors[2]</option>
+                    </select>
+                    <label for="color">Choose Size:</label>
+                    <select name="color" id="color" @bind="chosenSize">
+                        <option value="@product.Sizes[0]">@product.Sizes[0]</option>
+                        <option value="@product.Sizes[1]">@product.Sizes[1]</option>
+                        <option value="@product.Sizes[2]">@product.Sizes[2]</option>
+                    </select>
+                </div>
+                <p>Category: @product.Category</p>
+                <div class="row">
+                    <div>
+                        <p>Tags: <img src="Icons/Tags Button.png" /></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div>
+                        <p>
+                            Share:
+                            <img src="Icons/Group 1107.png" />
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<NavLink class="nav-link" href="allproducts">Back to Products</NavLink>
+<br />
+
+
+@code {
+    int SessionValue = 0;
+    string chosenColor = "";
+    string chosenSize = "";
+    string currentBigPicture = "";
+
+    private Product product;
+
+    [Parameter]
+    public string Id { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+
+        product = productService.GetProduct(MongoDB.Bson.ObjectId.Parse(Id));
+
+        currentBigPicture = product.Image1;
+    }
+
+    private async void Save()
+    {
+        product.Colors[0] = chosenColor;
+        product.Sizes[0] = chosenSize;
+        productService.SaveOrUpdateCart(product);
+        SessionValue = await oLocalStore.GetItemAsync<int>("MySessionValue");
+        await oLocalStore.SetItemAsync("MySessionValue", ++SessionValue);
+    }
+
+    private void BigPicture(int newPic)
+    {
+        switch (newPic)
+        {
+            case 1:
+                currentBigPicture = product.Image1;
+                break;
+            case 2:
+                currentBigPicture = product.Image2;
+                break;
+            case 3:
+                currentBigPicture = product.Image3;
+                break;
+            case 4:
+                currentBigPicture = product.Image4;
+                break;
+            default:
+                break;
+        }
+
+        StateHasChanged();
+    }
+}

@@ -83,8 +83,50 @@ using MongoBlazorServer.Shared;
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "D:\Användare\tillt\source\repos\AspNet\MongoBlazorServer\MongoBlazorServer\Pages\Index.razor"
+#line 11 "D:\Användare\tillt\source\repos\AspNet\MongoBlazorServer\MongoBlazorServer\_Imports.razor"
 using MongoBlazorServer.Data;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 12 "D:\Användare\tillt\source\repos\AspNet\MongoBlazorServer\MongoBlazorServer\_Imports.razor"
+using MongoBlazorServer.IService;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 13 "D:\Användare\tillt\source\repos\AspNet\MongoBlazorServer\MongoBlazorServer\_Imports.razor"
+using MongoBlazorServer.Service;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 14 "D:\Användare\tillt\source\repos\AspNet\MongoBlazorServer\MongoBlazorServer\_Imports.razor"
+using MongoBlazorServer.Components;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 15 "D:\Användare\tillt\source\repos\AspNet\MongoBlazorServer\MongoBlazorServer\_Imports.razor"
+using MongoDB.Bson;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 16 "D:\Användare\tillt\source\repos\AspNet\MongoBlazorServer\MongoBlazorServer\_Imports.razor"
+using MongoDB.Bson.Serialization.Attributes;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 17 "D:\Användare\tillt\source\repos\AspNet\MongoBlazorServer\MongoBlazorServer\_Imports.razor"
+using MongoDB.Bson.Serialization.IdGenerators;
 
 #line default
 #line hidden
@@ -98,69 +140,39 @@ using MongoBlazorServer.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 186 "D:\Användare\tillt\source\repos\AspNet\MongoBlazorServer\MongoBlazorServer\Pages\Index.razor"
-      
-    ShowModel ShowModel = new ShowModel();
-    Product Product = new Product();
-    List<Product> Products = new List<Product>();
+#line 37 "D:\Användare\tillt\source\repos\AspNet\MongoBlazorServer\MongoBlazorServer\Pages\Index.razor"
+       
+    // Local Storage
+    int SessionValue = 0;
+    string Message = "";
+
+
+    int ValueHigh = 75;
+    int ValueLow = 25;
+    
+    // Local Storage
+
 
     protected override async Task OnInitializedAsync()
     {
-        GetProducts(ShowModel);
+        SessionValue = await oLocalStore.GetItemAsync<int>("MySessionValue");
     }
-    private void GetProducts(ShowModel ShowModel)
+    public async void SaveSession()
     {
-        Products = productService.GetProducts(ShowModel);
+        Message = "Session Saved";
+        await oLocalStore.SetItemAsync("MySessionValue", SessionValue);
     }
-    private void Save()
+    public async void ClearSession()
     {
-        productService.SaveOrUpdate(Product);
-        Reset();
-        GetProducts(ShowModel);
-    }
-    private void Reset()
-    {
-        Product = new Product();
-    }
-    private void Edit(string productName)
-    {
-        Product = productService.GetProduct(productName);
-    }
-    private void Delete(string productId)
-    {
-        productService.Delete(productId);
-        GetProducts(ShowModel);
-    }
-    private void ShowFunction()
-    {
-        if (ShowModel.ShowInStockAll)
-        {
-            ShowModel.ShowInStockTrue = false;
-            ShowModel.ShowInStockFalse = false;
-        }
-        if (ShowModel.ShowOnSaleAll)
-        {
-            ShowModel.ShowOnSaleTrue = false;
-            ShowModel.ShowOnSaleFalse = false;
-        }
-        if (ShowModel.ShowCategoryAll)
-        {
-            ShowModel.ShowCategoryMen = false;
-            ShowModel.ShowCategoryWomen = false;
-            ShowModel.ShowCategoryKids = false;
-            ShowModel.ShowCategoryHats = false;
-            ShowModel.ShowCategoryShoes = false;
-            ShowModel.ShowCategorySunglasses = false;
-            ShowModel.ShowCategoryWatches = false;
-        }
-
-        GetProducts(ShowModel);
+        Message = "Session Clear";
+        SessionValue = 0;
+        await oLocalStore.ClearAsync();
     }
 
 #line default
 #line hidden
 #nullable disable
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private MongoBlazorServer.IService.IProductService productService { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private Blazored.LocalStorage.ILocalStorageService oLocalStore { get; set; }
     }
 }
 #pragma warning restore 1591

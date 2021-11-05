@@ -79,6 +79,55 @@ using MongoBlazorServer.Shared;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 11 "D:\Användare\tillt\source\repos\AspNet\MongoBlazorServer\MongoBlazorServer\_Imports.razor"
+using MongoBlazorServer.Data;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 12 "D:\Användare\tillt\source\repos\AspNet\MongoBlazorServer\MongoBlazorServer\_Imports.razor"
+using MongoBlazorServer.IService;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 13 "D:\Användare\tillt\source\repos\AspNet\MongoBlazorServer\MongoBlazorServer\_Imports.razor"
+using MongoBlazorServer.Service;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 14 "D:\Användare\tillt\source\repos\AspNet\MongoBlazorServer\MongoBlazorServer\_Imports.razor"
+using MongoBlazorServer.Components;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 15 "D:\Användare\tillt\source\repos\AspNet\MongoBlazorServer\MongoBlazorServer\_Imports.razor"
+using MongoDB.Bson;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 16 "D:\Användare\tillt\source\repos\AspNet\MongoBlazorServer\MongoBlazorServer\_Imports.razor"
+using MongoDB.Bson.Serialization.Attributes;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 17 "D:\Användare\tillt\source\repos\AspNet\MongoBlazorServer\MongoBlazorServer\_Imports.razor"
+using MongoDB.Bson.Serialization.IdGenerators;
+
+#line default
+#line hidden
+#nullable disable
     public partial class App : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -94,7 +143,7 @@ using MongoBlazorServer.Shared;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(2, "PreferExactMatches", 
+            __builder.AddAttribute(2, "PreferExactMatches", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
 #nullable restore
 #line 1 "D:\Användare\tillt\source\repos\AspNet\MongoBlazorServer\MongoBlazorServer\App.razor"
                                                                      true
@@ -102,7 +151,7 @@ using MongoBlazorServer.Shared;
 #line default
 #line hidden
 #nullable disable
-            );
+            ));
             __builder.AddAttribute(3, "Found", (Microsoft.AspNetCore.Components.RenderFragment<Microsoft.AspNetCore.Components.RouteData>)((routeData) => (__builder2) => {
                 __builder2.OpenComponent<Microsoft.AspNetCore.Components.RouteView>(4);
                 __builder2.AddAttribute(5, "RouteData", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.RouteData>(

@@ -1,5 +1,99 @@
 @import '';
 
+/* _content/MongoBlazorServer/Components/CategorySelectorComponent.razor.rz.scp.css */
+
+
+select[b-jjiedfq42e] {
+    border-style: none;
+    border: 0px;
+    outline: 0px;
+    overflow-y: auto;
+    /*background-color: #111;*/ /* Black */
+    /*color: #818181;*/
+}
+/* _content/MongoBlazorServer/Pages/AllProductsPage.razor.rz.scp.css */
+/* The sidebar menu */
+.sidenav[b-h14q3saxvp] {
+    /*height: 100%;*/ /* Full-height: remove this if you want "auto" height */
+    /*width: 160px;*/ /* Set the width of the sidebar */
+    /*position: fixed;*/ /* Fixed Sidebar (stay in place on scroll) */
+    /*z-index: 1;*/ /* Stay on top */
+    /*top: 0;*/ /* Stay at the top */
+    /*left: 0;*/
+    /*background-color: #111;  Black */
+    /*overflow-x: hidden;*/ /* Disable horizontal scroll */
+    /*padding-top: 20px;*/
+}
+
+    /* The navigation menu links */
+    .sidenav a[b-h14q3saxvp] {
+        padding: 6px 8px 6px 16px;
+        text-decoration: none;
+        font-size: 25px;
+        /*color: #818181;*/
+        display: block;
+    }
+
+    .sidenav select[b-h14q3saxvp] {
+        border-style: none;
+        border: 0px;
+        outline: 0px;
+        overflow-y: auto;
+        /*background-color: #111;*/ /* Black */
+        /*color: #818181;*/
+    }
+/* _content/MongoBlazorServer/Pages/SandBox.razor.rz.scp.css */
+*[b-07h2noa9fn] {
+    box-sizing: border-box;
+}
+
+.container[b-07h2noa9fn] {
+    position: relative;
+    width: 50%;
+    max-width: 300px;
+}
+
+.image[b-07h2noa9fn] {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.overlay[b-07h2noa9fn] {
+    position: absolute;
+    bottom: 0;
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.5); /* Black see-through */
+    color: #f1f1f1;
+    width: 100%;
+    transition: .5s ease;
+    opacity: 0;
+    color: white;
+    font-size: 20px;
+    padding: 20px;
+    text-align: center;
+}
+
+.container:hover .overlay[b-07h2noa9fn] {
+    opacity: 1;
+}
+/* _content/MongoBlazorServer/Pages/Slider.razor.rz.scp.css */
+*[b-dutvc4zfr7] {
+    box-sizing: border-box;
+}
+
+.column[b-dutvc4zfr7] {
+    float: left;
+    width: 33.33%;
+    padding: 5px;
+}
+
+/* Clearfix (clear floats) */
+.row[b-dutvc4zfr7]::after {
+    content: "";
+    clear: both;
+    display: table;
+}
 /* _content/MongoBlazorServer/Shared/MainLayout.razor.rz.scp.css */
 .page[b-t8n4jjggy1] {
     position: relative;

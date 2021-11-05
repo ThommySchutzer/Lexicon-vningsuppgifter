@@ -1,0 +1,134 @@
+﻿@page "/shoppingcart"
+
+@inject IProductService productService
+
+<div class="container-fluid" style="padding:50px 0;background-color:black;color:white;text-align:center;">
+    <h2>Shopping Cart > Checkout > Order Complete</h2>
+</div>
+
+<div class="card">
+    <div class="row">
+        <div class="col-sm-8" style="display: flex;">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Product</th>
+                        <th></th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Products.Count() > 0)
+                    {
+                        @foreach (var pro in Products)
+                        {
+                            <tr>
+                                <td><img src="/Icons/Close icon.png" @onclick="@(e => DeleteItem(pro.Id))"/></td>
+                                <td><img src="@pro.Image11" /></td>
+                                <td>
+                                    <NavLink href="@($"product/{pro.Id}")">
+                                        @pro.Name
+                                    </NavLink>
+                                </td>
+                                <td>@pro.Price.ToString("c")</td>
+                                <td><input type="number" id="quantity" name="quantity" step="1" style="width:60px;" @bind="@pro.Quantity"></td>
+                                @{
+                                    subTotal = Math.Round((Double)@pro.Quantity * @pro.Price, 2);
+                                }
+                                <td>@subTotal.ToString("c")</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="col-sm-4" style="border-style:dotted">
+            <h2 style="background-color: black; color: white; text-align: center;">Cart Total</h2>
+            <div>
+                @{
+                    subTotalTotal = 0;
+                    foreach (var pro in Products)
+                    {
+                        subTotalTotal += Math.Round((Double)@pro.Quantity * @pro.Price, 2);
+                        subTotalTotal = Math.Round((Double)subTotalTotal, 2);
+                    }
+                }
+                <p>Subtotal: <span style="float:right;">@subTotalTotal.ToString("c")</span></p>
+                <hr />
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <p>Shipping: </p>
+                </div>
+                <div class="col-sm-6">
+                    <p style="float: right;">
+                        <label style="display:block;">
+                            <input type="radio"
+                                   value="1"
+                                   name="group"
+                                   checked="@(shippingRate == 0)"
+                                   @onclick="@(()=>shippingRate = 0)" />Free shipping: 0 kr
+                        </label>
+                        <label style="display:block;">
+                            <input type="radio"
+                                   value="2"
+                                   name="group"
+                                   checked="@(shippingRate == 20)"
+                                   @onclick="@(()=>shippingRate = 20)" />Local pickup: 20 kr
+                        </label>
+                        <label style="display:block;">
+                            <input type="radio"
+                                   value="2"
+                                   name="group"
+                                   checked="@(shippingRate == 25)"
+                                   @onclick="@(()=>shippingRate = 25)" />Flat rate: 25 kr
+                        </label>
+                    </p>
+                </div>
+            </div>
+            <div>
+                <hr />
+                @{ totalTotal = subTotalTotal + shippingRate; }
+                <p><strong>TOTAL: </strong>: <span style="float:right;">@totalTotal.ToString("c")</span></p>
+                <p style="text-align:center"><img src="/Icons/Proceed checkout btn.png" @onclick="@(e => Checkout())" /></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    Product Product = new Product();
+    List<Product> Products = new List<Product>();
+    double subTotal = 0;
+    double subTotalTotal = 0;
+    double totalTotal = 0;
+    int shippingRate = 0;
+
+    protected override async Task OnInitializedAsync()
+    {
+        Products = productService.GetCartItems();
+    }
+
+    private void Checkout()
+    {
+        // Make orders
+
+        // Clear Shopping Cart
+        foreach(var pro in Products)
+        {
+            DeleteItem(pro.Id);
+        }
+
+        // Go to Checkout Page
+    }
+
+    private void DeleteItem(ObjectId productId)
+    {
+        productService.DeleteCartItem(productId);
+        Products = new List<Product>();
+        Products = productService.GetCartItems();
+    }
+}

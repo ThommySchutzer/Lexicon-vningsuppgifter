@@ -1,0 +1,389 @@
+﻿@page "/admin"
+@using MongoBlazorServer.Data
+@using MongoDB.Bson
+@inject IProductService productService
+
+<div class="row">
+    <div class="col-md-3">
+        <h1>Admin</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <input type="checkbox" id="inStock" @bind="Product.InStock">
+                <label for="inStock"><strong> Product In Stock</strong></label><br>
+            </div>
+            <div class="col-md-6">
+                <input type="checkbox" id="onSale" @bind="Product.OnSale">
+                <label for="onSale"><strong> Product On Sale</strong></label><br>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <label><strong>Price:</strong></label>
+            </div>
+            <div class="col-md-9">
+                <input @bind="Product.Price" style="width:100%;" placeholder="Product Price" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <label><strong>Category:</strong></label>
+            </div>
+            <div class="col-md-9">
+                <input @bind="Product.Category" style="width:100%;" placeholder="Product Category" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <label><strong>Brand:</strong></label>
+            </div>
+            <div class="col-md-9">
+                <input @bind="Product.Brand" style="width:100%;" placeholder="Product Brand" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <label><strong>Name:</strong></label>
+            </div>
+            <div class="col-md-9">
+                <input @bind="Product.Name" style="width:100%;" placeholder="Product Name" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <label><strong>Rating:</strong></label>
+            </div>
+            <div class="col-md-9">
+                <input @bind="Product.Rating" style="width:100%;" placeholder="Product Rating" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <label><strong>Sizes:</strong></label>
+            </div>
+            <div class="col-md-3">
+                <input @bind="Product.Sizes[0]" style="width:100%;" placeholder="Sizes1" />
+            </div>
+            <div class="col-md-3">
+                <input @bind="Product.Sizes[1]" style="width:100%;" placeholder="Sizes2" />
+            </div>
+            <div class="col-md-3">
+                <input @bind="Product.Sizes[2]" style="width:100%;" placeholder="Sizes3" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <label><strong>Colors:</strong></label>
+            </div>
+            <div class="col-md-3">
+                <input @bind="Product.Colors[0]" style="width:100%;" placeholder="Colors1" />
+            </div>
+            <div class="col-md-3">
+                <input @bind="Product.Colors[1]" style="width:100%;" placeholder="Colors2" />
+            </div>
+            <div class="col-md-3">
+                <input @bind="Product.Colors[2]" style="width:100%;" placeholder="Colors3" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <label><strong>Labels:</strong></label>
+            </div>
+            <div class="col-md-3">
+                <input @bind="Product.Labels[0]" style="width:100%;" placeholder="Labels1" />
+            </div>
+            <div class="col-md-3">
+                <input @bind="Product.Labels[1]" style="width:100%;" placeholder="Labels2" />
+            </div>
+            <div class="col-md-3">
+                <input @bind="Product.Labels[2]" style="width:100%;" placeholder="Labels3" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <label><strong>Tags:</strong></label>
+            </div>
+            <div class="col-md-3">
+                <input @bind="Product.Tags[0]" style="width:100%;" placeholder="Tags1" />
+            </div>
+            <div class="col-md-3">
+                <input @bind="Product.Tags[1]" style="width:100%;" placeholder="Tags2" />
+            </div>
+            <div class="col-md-3">
+                <input @bind="Product.Tags[2]" style="width:100%;" placeholder="Tags3" />
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-4"></div>
+            <div class="col-md-8">
+                <button class="btn btn-primary" @onclick="@(e => Save())">Save</button>
+                <button class="btn btn-danger" @onclick="@(e => Reset())" style="float:right;">Reset</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <h1>Filter</h1>
+        <div class="row">
+            <div class="col-md-2">
+                <p><strong>In Stock</strong></p>
+                <input type="checkbox" id="showinstocktrue" @bind="ShowModel.InStock[0]">
+                <label for="showinstocktrue"> True</label><br>
+                <input type="checkbox" id="showinstockfalse" @bind="ShowModel.InStock[1]">
+                <label for="showinstockfalse"> False</label><br>
+                <input type="checkbox" id="showinstockall" @bind="ShowModel.InStock[2]">
+                <label for="showinstockall"> All</label><br>
+
+                <br />
+                <p><strong>On Sale</strong></p>
+                <input type="checkbox" id="showonsaletrue" @bind="ShowModel.OnSale[0]">
+                <label for="showonsaletrue"> True</label><br>
+                <input type="checkbox" id="showonsalefalse" @bind="ShowModel.OnSale[1]">
+                <label for="showonsalefalse"> False</label><br>
+                <input type="checkbox" id="showonsaleall" @bind="ShowModel.OnSale[2]">
+                <label for="showonsaleall"> All</label><br>
+            </div>
+            <div class="col-md-2">
+                <CategorySelectorComponent SetCurrentCategory="SetCurrentCategory"></CategorySelectorComponent>
+            </div>
+            <div class="col-md-2">
+                <p><strong>Brand</strong></p>
+                <input type="checkbox" id="showbrandbexim" @bind="ShowModel.Brand[0]">
+                <label for="showbrandbexim"> Bexim</label><br>
+                <input type="checkbox" id="showbrandlighton" @bind="ShowModel.Brand[1]">
+                <label for="showbrandlighton"> Lighton</label><br>
+                <input type="checkbox" id="showbranddismis" @bind="ShowModel.Brand[2]">
+                <label for="showbranddismis"> Dismis</label><br>
+                <input type="checkbox" id="showbrandrosimo" @bind="ShowModel.Brand[3]">
+                <label for="showbrandrosimo"> Rosimo</label><br>
+                <input type="checkbox" id="showbranddallas" @bind="ShowModel.Brand[4]">
+                <label for="showbranddallas"> Dallas</label><br>
+                <input type="checkbox" id="showbrandconcord" @bind="ShowModel.Brand[5]">
+                <label for="showbrandconcord"> Concord</label><br>
+                <input type="checkbox" id="showbrandall" @bind="ShowModel.Brand[6]">
+                <label for="showbrandall"> All</label><br>
+            </div>
+            <div class="col-md-1">
+                <p><strong>Sizes</strong></p>
+                <input type="checkbox" id="showsizesxs" @bind="ShowModel.Sizes[0]">
+                <label for="showsizesxs"> XS</label><br>
+                <input type="checkbox" id="showsizess" @bind="ShowModel.Sizes[1]">
+                <label for="showbrandsizess"> S</label><br>
+                <input type="checkbox" id="showsizesm" @bind="ShowModel.Sizes[2]">
+                <label for="showsizesm"> M</label><br>
+                <input type="checkbox" id="showsizesl" @bind="ShowModel.Sizes[3]">
+                <label for="showsizesl"> L</label><br>
+                <input type="checkbox" id="showsizesxl" @bind="ShowModel.Sizes[4]">
+                <label for="showsizesxl"> XL</label><br>
+                <input type="checkbox" id="showsizesxxl" @bind="ShowModel.Sizes[5]">
+                <label for="showsizesxxl"> XXL</label><br>
+                <input type="checkbox" id="showsizesall" @bind="ShowModel.Sizes[6]">
+                <label for="showsizesall"> All</label><br>
+            </div>
+            <div class="col-md-2">
+                <p><strong>Colors</strong></p>
+                <input type="checkbox" id="showcolorsblack" @bind="ShowModel.Colors[0]">
+                <label for="showcolorsblack"> Black</label><br>
+                <input type="checkbox" id="showcolorswhite" @bind="ShowModel.Colors[1]">
+                <label for="showcolorswhite"> White</label><br>
+                <input type="checkbox" id="showcolorsred" @bind="ShowModel.Colors[2]">
+                <label for="showcolorsred"> Red</label><br>
+                <input type="checkbox" id="showcolorsblue" @bind="ShowModel.Colors[3]">
+                <label for="showcolorsblue"> Blue</label><br>
+                <input type="checkbox" id="showcolorsgreen" @bind="ShowModel.Colors[4]">
+                <label for="showcolorsgreen"> Green</label><br>
+                <input type="checkbox" id="showcolorsyellow" @bind="ShowModel.Colors[5]">
+                <label for="showcolorsyellow"> Yellow</label><br>
+                <input type="checkbox" id="showcolorsall" @bind="ShowModel.Colors[6]">
+                <label for="showcolorsall"> All</label><br>
+            </div>
+            <div class="col-md-1">
+                <p><strong>Labels</strong></p>
+                <input type="checkbox" id="showlabelsnew" @bind="ShowModel.Labels[0]">
+                <label for="showlabelsnew"> New</label><br>
+                <input type="checkbox" id="showlabelshot" @bind="ShowModel.Labels[1]">
+                <label for="showlabelshot"> Hot</label><br>
+                <input type="checkbox" id="showlabels30per" @bind="ShowModel.Labels[2]">
+                <label for="showlabels30per"> -30%</label><br>
+                <input type="checkbox" id="showlabels20per" @bind="ShowModel.Labels[3]">
+                <label for="showlabels20per"> -20%</label><br>
+                <input type="checkbox" id="showlabelsall" @bind="ShowModel.Labels[4]">
+                <label for="showlabelsall"> All</label><br>
+            </div>
+            <div class="col-md-2">
+                <p><strong>Tags</strong></p>
+                <input type="checkbox" id="showtagsdenim" @bind="ShowModel.Tags[0]">
+                <label for="showtagsdenim"> Denim</label><br>
+                <input type="checkbox" id="showtagsfashion" @bind="ShowModel.Tags[1]">
+                <label for="showtagsfashion"> Fashion</label><br>
+                <input type="checkbox" id="showtagswinter" @bind="ShowModel.Tags[2]">
+                <label for="showtagswinter"> Winter</label><br>
+                <input type="checkbox" id="showtagssummer" @bind="ShowModel.Tags[3]">
+                <label for="showtagssummer"> Summer</label><br>
+                <input type="checkbox" id="showtagsfleximood" @bind="ShowModel.Tags[4]">
+                <label for="showtagsfleximood"> Fleximood</label><br>
+                <input type="checkbox" id="showtagstrendy" @bind="ShowModel.Tags[5]">
+                <label for="showtagstrendy"> Trendy</label><br>
+                <input type="checkbox" id="showtagswork" @bind="ShowModel.Tags[6]">
+                <label for="showtagswork"> Work</label><br>
+                <input type="checkbox" id="showtagsleasure" @bind="ShowModel.Tags[7]">
+                <label for="showtagsleasure"> Leasure</label><br>
+                <input type="checkbox" id="showtagsall" @bind="ShowModel.Tags[8]">
+                <label for="showtagsall"> All</label><br>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-1">
+                <label><strong>Price:</strong></label>
+            </div>
+            <div class="col-md-1">
+                <input type="checkbox" id="sortpriceup" @bind="ShowModel.SortPrice[0]">
+                <label for="sortpriceup"> PriceUp</label><br>
+            </div>
+            <div class="col-md-1">
+                <input type="checkbox" id="sortpricedown" @bind="ShowModel.SortPrice[1]">
+                <label for="sortpricedown"> PriceDown</label><br>
+            </div>
+            <div class="col-md-1">
+                <input @bind="ShowModel.Price[0]" style="width:100%;" placeholder="MinPrice" />
+            </div>
+            <div class="col-md-1">
+                <input @bind="ShowModel.Price[1]" style="width:100%;" placeholder="MaxPrice" />
+            </div>
+            <div class="col-md-1">
+                <label><strong>Rating:</strong></label>
+            </div>
+            <div class="col-md-1">
+                <input type="checkbox" id="sortratingup" @bind="ShowModel.SortRating[0]">
+                <label for="sortratingup"> RatingUp</label><br>
+            </div>
+            <div class="col-md-1">
+                <input type="checkbox" id="sortratingdown" @bind="ShowModel.SortRating[1]">
+                <label for="sortratingdown"> RatingDown</label><br>
+            </div>
+            <div class="col-md-1">
+                <input @bind="ShowModel.Rating[0]" style="width:100%;" placeholder="MinRating" />
+            </div>
+            <div class="col-md-1">
+                <input @bind="ShowModel.Rating[1]" style="width:100%;" placeholder="MaxRating" />
+            </div>
+            <div class="col-md-1">
+                <button class="btn btn-primary" @onclick="@(e => ShowFunction())">Show</button>
+            </div>
+            <div class="col-md-1">
+                <button class="btn btn-danger" @onclick="@(e => DeleteAll())">DeleteAll</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row mt-5">
+    <div class="col-md-12">
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Product Id</th>
+                    <th>Status</th>
+                    <th>Price</th>
+                    <th>Category</th>
+                    <th>Brand</th>
+                    <th>Name</th>
+                    <th>Rating</th>
+                    <th>Sizes</th>
+                    <th>Colors</th>
+                    <th>Labels</th>
+                    <th>Tags</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Products.Count() > 0)
+                {
+                    @foreach (var pro in Products)
+                    {
+                        <tr>
+                            <td>
+                                <NavLink href="@($"product/{pro.Id}")">
+                                    @pro.Id
+                                </NavLink>
+                            </td>
+                            <td>In Stock is @pro.InStock, On Sale is @pro.OnSale</td>
+                            <td>@pro.Price</td>
+                            <td>@pro.Category</td>
+                            <td>@pro.Brand</td>
+                            <td>@pro.Name</td>
+                            <td>@pro.Rating</td>
+                            <td>@pro.Sizes[0],@pro.Sizes[1],@pro.Sizes[2]</td>
+                            <td>@pro.Colors[0],@pro.Colors[1],@pro.Colors[2]</td>
+                            <td>@pro.Labels[0],@pro.Labels[1],@pro.Labels[2]</td>
+                            <td>@pro.Tags[0],@pro.Tags[1],@pro.Tags[2]</td>
+                            <td>
+                                <button class="btn btn-primary" @onclick="@(e => Edit(@pro.Id))">Edit</button>
+                                <button class="btn btn-danger" @onclick="@(e => Delete(@pro.Id))">Delete</button>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@code{
+    ShowModel ShowModel = new ShowModel();
+    Product Product = new Product();
+    List<Product> Products = new List<Product>();
+
+    private int currentCategory = 7;
+
+    private void SetCurrentCategory(int value)
+    {
+        currentCategory = value;
+
+        for (int i = 0; i < ShowModel.Category.Length; i++)
+        {
+            ShowModel.Category[i] = false;
+        }
+
+        ShowModel.Category[currentCategory] = true;
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        GetProducts(ShowModel);
+    }
+    private void GetProducts(ShowModel ShowModel)
+    {
+        Products = productService.GetProducts(ShowModel);
+    }
+    private void Save()
+    {
+        productService.SaveOrUpdate(Product);
+        Reset();
+        GetProducts(ShowModel);
+    }
+    private void Reset()
+    {
+        Product = new Product();
+    }
+    private void Edit(ObjectId productId)
+    {
+        Product = productService.GetProduct(productId);
+    }
+    private void Delete(ObjectId productId)
+    {
+        productService.Delete(productId);
+        GetProducts(ShowModel);
+    }
+    private void ShowFunction()
+    {
+        GetProducts(ShowModel);
+        ShowModel = new ShowModel();
+    }
+    private void DeleteAll()
+    {
+        foreach (Product pro in Products)
+        {
+            productService.Delete(pro.Id);
+        }
+
+        GetProducts(ShowModel);
+    }
+}
+

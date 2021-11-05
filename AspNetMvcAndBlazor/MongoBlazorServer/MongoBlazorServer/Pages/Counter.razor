@@ -1,16 +1,31 @@
 ﻿@page "/counter"
+<!-- Local Storage -->
+@inject Blazored.LocalStorage.ILocalStorageService oLocalStore
+
+<span style="color:#c00;">Cart Items: @SessionValue</span>
 
 <h1>Counter</h1>
 
 <p>Current count: @currentCount</p>
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+<br>
+
 
 @code {
+    // Local Storage
+    int SessionValue = 0;
+
     private int currentCount = 0;
 
     private void IncrementCount()
     {
         currentCount++;
+    }
+
+    // Local Storage
+    protected override async Task OnInitializedAsync()
+    {
+        SessionValue = await oLocalStore.GetItemAsync<int>("MySessionValue");
     }
 }

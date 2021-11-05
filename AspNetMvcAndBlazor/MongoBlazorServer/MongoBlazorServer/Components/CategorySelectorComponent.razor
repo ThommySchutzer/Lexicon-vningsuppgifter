@@ -1,0 +1,52 @@
+﻿<p><strong>Product Categories</strong></p>
+
+<p>
+    <select size="8" @onchange="DoStuff">
+        <option value="7" selected>All</option>
+        @foreach (var cat in Categorys)
+        {
+            <option value="@cat.Id">@cat.Category</option>
+        }
+    </select>
+    <br />
+</p>
+
+@code {
+
+    [Parameter]
+    public EventCallback<int> SetCurrentCategory { get; set; }
+
+    public int selectedCategoryId { get; set; } = 7;
+
+    public List<CategoryIndex> Categorys { get; set; }
+
+    public class CategoryIndex
+    {
+        public int Id { get; set; } = 0;
+        public string Category { get; set; } = "";
+    }
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        Categorys = new List<CategoryIndex>
+        {
+            new CategoryIndex { Id = 0, Category = "Men" },
+            new CategoryIndex { Id = 1, Category = "Women" },
+            new CategoryIndex { Id = 2, Category = "Kids" },
+            new CategoryIndex { Id = 3, Category = "Hats" },
+            new CategoryIndex { Id = 4, Category = "Shoes" },
+            new CategoryIndex { Id = 5, Category = "Sunglasses" },
+            new CategoryIndex { Id = 6, Category = "Watches" },
+            //new CategoryIndex { Id = 7, Category = "All" },
+        };
+    }
+
+    private void DoStuff(ChangeEventArgs e)
+    {
+        selectedCategoryId = Convert.ToInt32(e.Value);
+
+        SetCurrentCategory.InvokeAsync(selectedCategoryId);
+    }
+}

@@ -1,245 +1,64 @@
 ﻿@page "/"
-@using MongoBlazorServer.Data
-@inject MongoBlazorServer.IService.IProductService productService
+<!-- Local Storage -->
+@inject Blazored.LocalStorage.ILocalStorageService oLocalStore
+
+<h3>This is the homepage</h3>
 
 <div class="row">
     <div class="col-md-4">
-        <h1>Admin</h1>
-        <div class="row">
-            <div class="col-md-3">
-                <input type="checkbox" id="inStock" @bind="Product.InStock">
-                <label for="inStock"> Product In Stock</label><br>
-            </div>
-            <div class="col-md-3">
-                <input type="checkbox" id="onSale" @bind="Product.OnSale">
-                <label for="onSale"> Product On Sale</label><br>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3">
-                <label>Prize :</label>
-            </div>
-            <div class="col-md-9">
-                <input @bind="Product.Prize" style="width:100%;" placeholder="Product Prize" />
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3">
-                <label>Category :</label>
-            </div>
-            <div class="col-md-9">
-                <input @bind="Product.Category" style="width:100%;" placeholder="Product Category" />
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3">
-                <label>Brand :</label>
-            </div>
-            <div class="col-md-9">
-                <input @bind="Product.Brand" style="width:100%;" placeholder="Product Brand" />
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3">
-                <label>Name :</label>
-            </div>
-            <div class="col-md-9">
-                <input @bind="Product.Name" style="width:100%;" placeholder="Product Name" />
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3">
-                <label>Sizes :</label>
-            </div>
-            <div class="col-md-3">
-                <input @bind="Product.Sizes[0]" style="width:100%;" placeholder="Sizes1" />
-            </div>
-            <div class="col-md-3">
-                <input @bind="Product.Sizes[1]" style="width:100%;" placeholder="Sizes2" />
-            </div>
-            <div class="col-md-3">
-                <input @bind="Product.Sizes[2]" style="width:100%;" placeholder="Sizes3" />
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3">
-                <label>Colors :</label>
-            </div>
-            <div class="col-md-3">
-                <input @bind="Product.Colors[0]" style="width:100%;" placeholder="Colors1" />
-            </div>
-            <div class="col-md-3">
-                <input @bind="Product.Colors[1]" style="width:100%;" placeholder="Colors2" />
-            </div>
-            <div class="col-md-3">
-                <input @bind="Product.Colors[2]" style="width:100%;" placeholder="Colors3" />
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3">
-                <label>Labels :</label>
-            </div>
-            <div class="col-md-3">
-                <input @bind="Product.Labels[0]" style="width:100%;" placeholder="Labels1" />
-            </div>
-            <div class="col-md-3">
-                <input @bind="Product.Labels[1]" style="width:100%;" placeholder="Labels2" />
-            </div>
-            <div class="col-md-3">
-                <input @bind="Product.Labels[2]" style="width:100%;" placeholder="Labels3" />
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4"></div>
-            <div class="col-md-8">
-                <button class="btn btn-primary" @onclick="@(e => Save())">Save</button>
-                <button class="btn btn-danger" @onclick="@(e => Reset())" style="float:right;">Reset</button>
-            </div>
-        </div>
+        <TaskList Name="Thommy"></TaskList>
     </div>
-    <div class="col-md-8">
-        <h1>Filter</h1>
-        <div class="row">
-            <div class="col-md-3">
-                <p>In Stock</p>
-                <input type="checkbox" id="showinstocktrue" @bind="ShowModel.ShowInStockTrue">
-                <label for="showinstocktrue"> True</label><br>
-                <input type="checkbox" id="showinstockfalse" @bind="ShowModel.ShowInStockFalse">
-                <label for="showinstockfalse"> False</label><br>
-                <input type="checkbox" id="showinstockall" @bind="ShowModel.ShowInStockAll">
-                <label for="showinstockall"> All</label><br>
-                <br />
-                <p>On Sale</p>
-                <input type="checkbox" id="showonsaletrue" @bind="ShowModel.ShowOnSaleTrue">
-                <label for="showonsaletrue"> True</label><br>
-                <input type="checkbox" id="showonsalefalse" @bind="ShowModel.ShowOnSaleFalse">
-                <label for="showonsalefalse"> False</label><br>
-                <input type="checkbox" id="showonsaleall" @bind="ShowModel.ShowOnSaleAll">
-                <label for="showonsaleall"> All</label><br>
-            </div>
-            <div class="col-md-3">
-                <p>Category</p>
-                <input type="checkbox" id="showcategorymen" @bind="ShowModel.ShowCategoryMen">
-                <label for="showcategorymen"> Men</label><br>
-                <input type="checkbox" id="showcategorywomen" @bind="ShowModel.ShowCategoryWomen">
-                <label for="showcategorywomen"> Women</label><br>
-                <input type="checkbox" id="showcategorykids" @bind="ShowModel.ShowCategoryKids">
-                <label for="showcategorykids"> Kids</label><br>
-                <input type="checkbox" id="showcategoryhats" @bind="ShowModel.ShowCategoryHats">
-                <label for="showcategoryhats"> Hats</label><br>
-                <input type="checkbox" id="showcategoryshoes" @bind="ShowModel.ShowCategoryShoes">
-                <label for="showcategoryshoes"> Shoes</label><br>
-                <input type="checkbox" id="showcategorysunglasses" @bind="ShowModel.ShowCategorySunglasses">
-                <label for="showcategorysunglasses"> Sunglasses</label><br>
-                <input type="checkbox" id="showcategorywatches" @bind="ShowModel.ShowCategoryWatches">
-                <label for="showcategorywatches"> Watches</label><br>
-                <input type="checkbox" id="showcategoryall" @bind="ShowModel.ShowCategoryAll">
-                <label for="showcategoryall"> All</label><br>
-            </div>
-        </div>
-        <button class="btn btn-primary" @onclick="@(e => ShowFunction())">Show</button>
+    <div class="col-md-4">
+        <TaskList Name="Ymmoth"></TaskList>
+    </div>
+    <div class="col-md-4">
+        <Counter></Counter>
     </div>
 </div>
-<div class="row mt-5">
-    <div class="col-md-12">
-        <table class="table table-striped table-bordered">
-            <thead>
-                <tr>
-                    <th>Product Id</th>
-                    <th>Status</th>
-                    <th>Prize</th>
-                    <th>Category</th>
-                    <th>Brand</th>
-                    <th>Name</th>
-                    <th>Sizes</th>
-                    <th>Colors</th>
-                    <th>Labels</th>
-                </tr>
-            </thead>
-            <tbody>
-                @if (Products.Count() > 0)
-                {
-                    @foreach (var pro in Products)
-                    {
-                        <tr>
-                            <td>@pro.Id</td>
-                            <td>In Stock is @pro.InStock, On Sale is @pro.OnSale</td>
-                            <td>@pro.Prize</td>
-                            <td>@pro.Category</td>
-                            <td>@pro.Brand</td>
-                            <td>@pro.Name</td>
-                            <td>@pro.Sizes[0],@pro.Sizes[1],@pro.Sizes[2]</td>
-                            <td>@pro.Colors[0],@pro.Colors[1],@pro.Colors[2]</td>
-                            <td>@pro.Labels[0],@pro.Labels[1],@pro.Labels[2]</td>
-                            <td>
-                                <button class="btn btn-primary" @onclick="@(e => Edit(@pro.Name))">Edit</button>
-                                <button class="btn btn-danger" @onclick="@(e => Delete(@pro.Id))">Delete</button>
-                            </td>
-                        </tr>
-                    }
-                }
-            </tbody>
-        </table>
-    </div>
+<div class="row">
+    <RangeControl @bind-ValueHigh="ValueHigh" @bind-ValueLow="ValueLow" MinValue="0" MaxValue="800" Width="100"></RangeControl>
+    <span>@ValueLow</span>-<span>@ValueHigh</span>
 </div>
+<br />
+<!-- Local Storage -->
+<input type="text" @bind="SessionValue" class="form-control" />
+<br />
 
-@code{
-    ShowModel ShowModel = new ShowModel();
-    Product Product = new Product();
-    List<Product> Products = new List<Product>();
+<button class="btn btn-success" @onclick="SaveSession">Session Save</button>
+<button class="btn btn-danger" @onclick="ClearSession">Session Clear</button>
+<br />
+<br />
+
+<span style="color:#c00;">@Message</span>
+<!-- End Local Storage -->
+
+
+
+@code {
+    // Local Storage
+    int SessionValue = 0;
+    string Message = "";
+
+
+    int ValueHigh = 75;
+    int ValueLow = 25;
+    
+    // Local Storage
+
 
     protected override async Task OnInitializedAsync()
     {
-        GetProducts(ShowModel);
+        SessionValue = await oLocalStore.GetItemAsync<int>("MySessionValue");
     }
-    private void GetProducts(ShowModel ShowModel)
+    public async void SaveSession()
     {
-        Products = productService.GetProducts(ShowModel);
+        Message = "Session Saved";
+        await oLocalStore.SetItemAsync("MySessionValue", SessionValue);
     }
-    private void Save()
+    public async void ClearSession()
     {
-        productService.SaveOrUpdate(Product);
-        Reset();
-        GetProducts(ShowModel);
-    }
-    private void Reset()
-    {
-        Product = new Product();
-    }
-    private void Edit(string productName)
-    {
-        Product = productService.GetProduct(productName);
-    }
-    private void Delete(string productId)
-    {
-        productService.Delete(productId);
-        GetProducts(ShowModel);
-    }
-    private void ShowFunction()
-    {
-        if (ShowModel.ShowInStockAll)
-        {
-            ShowModel.ShowInStockTrue = false;
-            ShowModel.ShowInStockFalse = false;
-        }
-        if (ShowModel.ShowOnSaleAll)
-        {
-            ShowModel.ShowOnSaleTrue = false;
-            ShowModel.ShowOnSaleFalse = false;
-        }
-        if (ShowModel.ShowCategoryAll)
-        {
-            ShowModel.ShowCategoryMen = false;
-            ShowModel.ShowCategoryWomen = false;
-            ShowModel.ShowCategoryKids = false;
-            ShowModel.ShowCategoryHats = false;
-            ShowModel.ShowCategoryShoes = false;
-            ShowModel.ShowCategorySunglasses = false;
-            ShowModel.ShowCategoryWatches = false;
-        }
-
-        GetProducts(ShowModel);
+        Message = "Session Clear";
+        SessionValue = 0;
+        await oLocalStore.ClearAsync();
     }
 }
-
-

@@ -7,20 +7,17 @@ namespace MongoBlazorServer.Data
 {
     public class ShowModel
     {
-        public bool ShowInStockTrue { get; set; } = false;
-        public bool ShowInStockFalse { get; set; } = false;
-        public bool ShowInStockAll { get; set; } = true;
-        public bool ShowOnSaleTrue { get; set; } = false;
-        public bool ShowOnSaleFalse { get; set; } = false;
-        public bool ShowOnSaleAll { get; set; } = true;
-        public bool ShowCategoryMen { get; set; } = false;
-        public bool ShowCategoryWomen { get; set; } = false;
-        public bool ShowCategoryKids { get; set; } = false;
-        public bool ShowCategoryHats { get; set; } = false;
-        public bool ShowCategoryShoes { get; set; } = false;
-        public bool ShowCategorySunglasses { get; set; } = false;
-        public bool ShowCategoryWatches { get; set; } = false;
-        public bool ShowCategoryAll { get; set; } = true;
-
+        public bool[] InStock { get; set; } = { false, false, true };
+        public bool[] OnSale { get; set; } = { false, false, true };
+        public bool[] Category { get; set; } = { false, false, false, false, false, false, false, true };
+        public bool[] Brand { get; set; } = { false, false, false, false, false, false, true };
+        public bool[] Sizes { get; set; } = { false, false, false, false, false, false, true };
+        public bool[] Colors { get; set; } = { false, false, false, false, false, false, true };
+        public bool[] Labels { get; set; } = { false, false, false, false, true };
+        public bool[] Tags { get; set; } = { false, false, false, false, false, false, false, false, true };
+        public int[] Price { get; set; } = { 0, 800 };
+        public int[] Rating { get; set; } = { 0, 5 };
+        public bool[] SortPrice { get; set; } = { false, false };
+        public bool[] SortRating { get; set; } = { false, false };
     }
 }

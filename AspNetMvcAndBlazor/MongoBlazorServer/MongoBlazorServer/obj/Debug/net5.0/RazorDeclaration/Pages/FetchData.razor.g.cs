@@ -83,7 +83,49 @@ using MongoBlazorServer.Shared;
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "D:\Användare\tillt\source\repos\AspNet\MongoBlazorServer\MongoBlazorServer\Pages\FetchData.razor"
+#line 12 "D:\Användare\tillt\source\repos\AspNet\MongoBlazorServer\MongoBlazorServer\_Imports.razor"
+using MongoBlazorServer.IService;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 13 "D:\Användare\tillt\source\repos\AspNet\MongoBlazorServer\MongoBlazorServer\_Imports.razor"
+using MongoBlazorServer.Service;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 14 "D:\Användare\tillt\source\repos\AspNet\MongoBlazorServer\MongoBlazorServer\_Imports.razor"
+using MongoBlazorServer.Components;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 15 "D:\Användare\tillt\source\repos\AspNet\MongoBlazorServer\MongoBlazorServer\_Imports.razor"
+using MongoDB.Bson;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 16 "D:\Användare\tillt\source\repos\AspNet\MongoBlazorServer\MongoBlazorServer\_Imports.razor"
+using MongoDB.Bson.Serialization.Attributes;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 17 "D:\Användare\tillt\source\repos\AspNet\MongoBlazorServer\MongoBlazorServer\_Imports.razor"
+using MongoDB.Bson.Serialization.IdGenerators;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 5 "D:\Användare\tillt\source\repos\AspNet\MongoBlazorServer\MongoBlazorServer\Pages\FetchData.razor"
 using MongoBlazorServer.Data;
 
 #line default
@@ -98,19 +140,25 @@ using MongoBlazorServer.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 39 "D:\Användare\tillt\source\repos\AspNet\MongoBlazorServer\MongoBlazorServer\Pages\FetchData.razor"
+#line 44 "D:\Användare\tillt\source\repos\AspNet\MongoBlazorServer\MongoBlazorServer\Pages\FetchData.razor"
        
     private WeatherForecast[] forecasts;
+
+    // Local Storage
+    int SessionValue = 0;
 
     protected override async Task OnInitializedAsync()
     {
         forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
+        // Local Storage
+        SessionValue = await oLocalStore.GetItemAsync<int>("MySessionValue");
     }
 
 #line default
 #line hidden
 #nullable disable
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private WeatherForecastService ForecastService { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private Blazored.LocalStorage.ILocalStorageService oLocalStore { get; set; }
     }
 }
 #pragma warning restore 1591

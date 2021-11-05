@@ -1,0 +1,10 @@
+﻿
+
+select {
+    border-style: none;
+    border: 0px;
+    outline: 0px;
+    overflow-y: auto;
+    /*background-color: #111;*/ /* Black */
+    /*color: #818181;*/
+}

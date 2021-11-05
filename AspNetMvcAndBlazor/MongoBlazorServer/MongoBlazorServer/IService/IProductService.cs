@@ -1,4 +1,5 @@
 ﻿using MongoBlazorServer.Data;
+using MongoDB.Bson;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,8 +10,11 @@ namespace MongoBlazorServer.IService
     public interface IProductService
     {
         void SaveOrUpdate(Product product);
-        Product GetProduct(string productId);
+        void SaveOrUpdateCart(Product product);
+        Product GetProduct(ObjectId productId);
         List<Product> GetProducts(ShowModel ShowModel);
-        string Delete(string productId);
+        List<Product> GetCartItems();
+        string Delete(ObjectId productId);
+        void DeleteCartItem(ObjectId productId);
     }
 }

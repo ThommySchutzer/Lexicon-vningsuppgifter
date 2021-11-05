@@ -1,0 +1,240 @@
+﻿@page "/sandbox"
+
+<card>
+    <h2>Image Overlay Title</h2>
+    <p>Hover over the image to see the effect.</p>
+
+    <div class="container">
+        <img src="Img/510x492_Girl_Shirt_01.png" alt="Avatar" class="image">
+        <div class="overlay">My Name is John</div>
+    </div>
+
+    @*<img src="Img/510x492_Girl_Shirt_01.png" alt="First slide" style="width:200px;height:200px;">*@
+</card>
+<card>
+    <img src="Img/510x492_Men_Shirt03_01.png" alt="Second slide" style="width:200px;height:200px;">
+</card>
+<card>
+    <img src="Img/510x492_Sunglasses_01.png" alt="Third slide" style="width:200px;height:200px;">
+</card>
+<hr />
+
+<style>
+    select {
+        border-style: none;
+        border: 0px;
+        outline: 0px;
+        overflow-y: auto;
+    }
+</style>
+
+<select name="sometext" size="5" @bind="@listBoxText">
+    <option>text1</option>
+    <option>text2</option>
+    <option>text3</option>
+    <option>text4</option>
+    <option>text5</option>
+</select>
+
+<p>@listBoxText</p>
+
+<p>
+    @person.SalesPerson
+</p>
+<p>
+    @person.Amount.ToString("c")
+</p>
+<p>
+    <input type="number"
+           @bind="person.Amount"
+           @bind:event="oninput" />
+</p>
+<p>
+    <label>
+        <input type="checkbox"
+               @bind="person.isActive" />
+        &nbsp;Is Active
+    </label>
+    <br />
+    Is Active: @person.isActive
+</p>
+<p>
+    <label>
+        <input type="radio"
+               value="1"
+               name="group"
+               checked="@(selectedGroup == 0)"
+               @onclick="@(()=>selectedGroup = 0)" />In Stock
+    </label>
+    <label>
+        <input type="radio"
+               value="2"
+               name="group"
+               checked="@(selectedGroup == 1)"
+               @onclick="@(()=>selectedGroup = 1)" />Not In Stock
+    </label>
+    <label>
+        <input type="radio"
+               value="2"
+               name="group"
+               checked="@(selectedGroup == 2)"
+               @onclick="@(()=>selectedGroup = 2)" />All
+    </label>
+    <br />
+    @selectedGroup
+</p>
+<p>
+    <select @bind="selectedLocationId">
+        <option value="0"></option>
+        @foreach (var loc in person.Locations)
+        {
+            <option value="@loc.Id">@loc.City</option>
+        }
+    </select>
+    <br />
+    @selectedLocationId
+</p>
+
+<CategorySelectorComponent SetCurrentCategory="SetCurrentCategory"></CategorySelectorComponent>
+
+<p>@currentCategory</p>
+
+
+<p>
+    <ul>
+        @foreach (var loc in person.Locations)
+        {
+            <li>@loc.City, @loc.ProvState, @loc.Country</li>
+        }
+    </ul>
+</p>
+<p>
+    <table class="table">
+        @foreach (var loc in person.Locations)
+        {
+            <tr>
+                <td>@loc.Id</td>
+                <td>
+                    <input type="text"
+                           class="form-control"
+                           @bind="@loc.City"
+                           @bind:event="oninput" />
+                </td>
+                <td>
+                    <input type="text"
+                           class="form-control"
+                           @bind="@loc.ProvState"
+                           @bind:event="oninput" />
+                </td>
+                <td>
+                    <input type="text"
+                           class="form-control"
+                           @bind="@loc.Country"
+                           @bind:event="oninput" />
+                </td>
+            </tr>
+        }
+    </table>
+</p>
+<div class="btn-group btn-group-toggle" data-toggle="buttons">
+    <label class="btn btn-secondary active">
+        <input type="radio" name="options" id="option1" autocomplete="off" checked> Active
+    </label>
+    <label class="btn btn-secondary">
+        <input type="radio" name="options" id="option2" autocomplete="off"> Radio
+    </label>
+    <label class="btn btn-secondary">
+        <input type="radio" name="options" id="option3" autocomplete="off"> Radio
+    </label>
+</div>
+<h1>Testing Table</h1>
+<div class="row profile-row" style="margin-left:10px">
+    @foreach (var image in Images)
+    {
+        <div class="col-3">
+            <img src="@image" style="width:100%; padding-bottom:10px" />
+        </div>
+    }
+</div>
+
+@code {
+    private string listBoxText;
+
+    private IndexViewModel person = null;
+    private int selectedGroup = 0;
+    private int selectedLocationId = 0;
+
+    private int currentCategory = 7;
+
+    private void SetCurrentCategory(int value)
+    {
+        currentCategory = value;
+    }
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        person = new IndexViewModel
+        {
+            SalesPerson = "Alex",
+            Amount = 15000,
+            Locations = new List<Location>
+        {
+                new Location { Id=1, City="Toronto", ProvState="Ontario", Country="Canada" },
+                new Location { Id=2, City="Montreal", ProvState="Quebec", Country="Canada" }
+            }
+        };
+
+    }
+
+    #region "View Model"
+
+    class IndexViewModel
+    {
+        public string SalesPerson { get; set; }
+        public double Amount { get; set; }
+        public bool isActive { get; set; }
+        public List<Location> Locations { get; set; }
+    }
+
+    class Location
+    {
+        public int Id { get; set; }
+        public string City { get; set; }
+        public string ProvState { get; set; }
+        public string Country { get; set; }
+    }
+
+    #endregion
+
+
+
+    List<String> Images = new List<String>() {
+        "https://thumbs.dreamstime.com/b/pineapple-headphones-wooden-table-horizontal-front-black-background-62166845.jpg",
+         "https://images.unsplash.com/photo-1558981852-426c6c22a060?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" ,
+         "https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" ,
+         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-sZlG6VgOM5DgG6RToxO2PPvZFml3y-L2WGJjxLIfVU4wGAN0yA&s" ,
+         "https://images.unsplash.com/photo-1524293581917-878a6d017c71?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" ,
+         "https://images.unsplash.com/photo-1504575958497-ccdd586c2997?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1354&q=80" ,
+         "https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" ,
+         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-sZlG6VgOM5DgG6RToxO2PPvZFml3y-L2WGJjxLIfVU4wGAN0yA&s" ,
+         "https://images.unsplash.com/photo-1531219432768-9f540ce91ef3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" ,
+         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-sZlG6VgOM5DgG6RToxO2PPvZFml3y-L2WGJjxLIfVU4wGAN0yA&s" ,
+         "https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" ,
+         "https://images.unsplash.com/photo-1558981852-426c6c22a060?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" ,
+         "https://thumbs.dreamstime.com/b/pineapple-headphones-wooden-table-horizontal-front-black-background-62166845.jpg" ,
+         "https://images.unsplash.com/photo-1558981852-426c6c22a060?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" ,
+         "https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" ,
+         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-sZlG6VgOM5DgG6RToxO2PPvZFml3y-L2WGJjxLIfVU4wGAN0yA&s" ,
+         "https://images.unsplash.com/photo-1524293581917-878a6d017c71?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" ,
+         "https://images.unsplash.com/photo-1504575958497-ccdd586c2997?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1354&q=80" ,
+         "https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" ,
+         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-sZlG6VgOM5DgG6RToxO2PPvZFml3y-L2WGJjxLIfVU4wGAN0yA&s" ,
+         "https://images.unsplash.com/photo-1531219432768-9f540ce91ef3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" ,
+         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-sZlG6VgOM5DgG6RToxO2PPvZFml3y-L2WGJjxLIfVU4wGAN0yA&s" ,
+         "https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" ,
+         "https://images.unsplash.com/photo-1558981852-426c6c22a060?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
+    };
+
+}

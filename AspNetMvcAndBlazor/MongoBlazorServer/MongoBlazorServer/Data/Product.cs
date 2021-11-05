@@ -1,5 +1,6 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Bson.Serialization.IdGenerators;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace MongoBlazorServer.Data
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; } = MongoDB.Bson.ObjectId.GenerateNewId().ToString();
+        public ObjectId Id { get; set; } = MongoDB.Bson.ObjectId.GenerateNewId();
 
         [BsonElement("inStock")]
         public bool InStock { get; set; } = false;
@@ -20,11 +21,8 @@ namespace MongoBlazorServer.Data
         [BsonElement("onSale")]
         public bool OnSale { get; set; } = false;
 
-        [BsonElement("prize")]
-        public double Prize { get; set; } = 0.0;
-
-        [BsonElement("picture")]
-        public string Picture { get; set; } = "";
+        [BsonElement("price")]
+        public double Price { get; set; } = 0.0;
 
         [BsonElement("category")]
         public string Category { get; set; } = "";
@@ -34,9 +32,14 @@ namespace MongoBlazorServer.Data
 
         [BsonElement("name")]
         public string Name { get; set; } = "";
+        [BsonElement("rating")]
+        public int Rating { get; set; } = 0;
 
-        [BsonElement("about")]
-        public string About { get; set; } = "";
+        [BsonElement("quantity")]
+        public int Quantity { get; set; } = 0;
+
+        [BsonElement("description")]
+        public string Description { get; set; } = "";
 
         [BsonElement("sizes")]
         public string[] Sizes { get; set; } = new string[3];
@@ -46,5 +49,40 @@ namespace MongoBlazorServer.Data
 
         [BsonElement("labels")]
         public string[] Labels { get; set; } = new string[3];
+        [BsonElement("tags")]
+        public string[] Tags { get; set; } = new string[3];
+
+        [BsonElement("image1")]
+        public string Image1 { get; set; } = "";
+
+        [BsonElement("image2")]
+        public string Image2 { get; set; } = "";
+
+        [BsonElement("image3")]
+        public string Image3 { get; set; } = "";
+
+        [BsonElement("image4")]
+        public string Image4 { get; set; } = "";
+
+        [BsonElement("image5")]
+        public string Image5 { get; set; } = "";
+
+        [BsonElement("image6")]
+        public string Image6 { get; set; } = "";
+
+        [BsonElement("image7")]
+        public string Image7 { get; set; } = "";
+
+        [BsonElement("image8")]
+        public string Image8 { get; set; } = "";
+
+        [BsonElement("image9")]
+        public string Image9 { get; set; } = "";
+
+        [BsonElement("image10")]
+        public string Image10 { get; set; } = "";
+
+        [BsonElement("image11")]
+        public string Image11 { get; set; } = "";
     }
 }

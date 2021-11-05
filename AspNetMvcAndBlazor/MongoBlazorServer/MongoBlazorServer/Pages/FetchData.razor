@@ -1,9 +1,14 @@
 ﻿@page "/fetchdata"
+<!-- Local Storage -->
+@inject Blazored.LocalStorage.ILocalStorageService oLocalStore
 
 @using MongoBlazorServer.Data
 @inject WeatherForecastService ForecastService
 
 <h1>Weather forecast</h1>
+
+<!-- Local Storage -->
+<span style="color:#c00;">@SessionValue</span>
 
 <p>This component demonstrates fetching data from a service.</p>
 
@@ -39,8 +44,13 @@ else
 @code {
     private WeatherForecast[] forecasts;
 
+    // Local Storage
+    int SessionValue = 0;
+
     protected override async Task OnInitializedAsync()
     {
         forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
+        // Local Storage
+        SessionValue = await oLocalStore.GetItemAsync<int>("MySessionValue");
     }
 }

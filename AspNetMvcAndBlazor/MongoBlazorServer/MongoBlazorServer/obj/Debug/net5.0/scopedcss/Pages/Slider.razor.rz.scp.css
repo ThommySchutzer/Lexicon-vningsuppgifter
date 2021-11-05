@@ -1,0 +1,16 @@
+*[b-dutvc4zfr7] {
+    box-sizing: border-box;
+}
+
+.column[b-dutvc4zfr7] {
+    float: left;
+    width: 33.33%;
+    padding: 5px;
+}
+
+/* Clearfix (clear floats) */
+.row[b-dutvc4zfr7]::after {
+    content: "";
+    clear: both;
+    display: table;
+}

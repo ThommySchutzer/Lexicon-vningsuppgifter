@@ -1,0 +1,315 @@
+﻿@page "/slider"
+
+@inject IProductService productService
+
+<h3>Slider</h3>
+
+<div class="container">
+    <h2>Slider Example</h2>
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+            <li data-target="#myCarousel" data-slide-to="3"></li>
+            <li data-target="#myCarousel" data-slide-to="4"></li>
+        </ol>
+
+        <!--
+        <div class="card" style="width: 100%;">
+            <div class="card-body">
+                <NavLink href="@($"product/{pro.Id}")">
+                    <img src="@pro.Image9" />
+                </NavLink>
+
+                <h5 class="card-title">@pro.Name</h5>
+                <h6 class="card-subtitle mb-2 text-muted">@pro.Brand</h6>
+                <hr />
+                <p>
+                    Price: <label style="color:darkred">@pro.Price.ToString("c")</label>
+                </p>
+                <p class="card-text">@pro.Description</p>
+            </div>
+        </div>-->
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <card>
+                    <div class="row">
+                        <div class="column card">
+                            <div class="card-body" style="width: 100%;">
+                                <NavLink href="@($"product/{products[0].Id}")">
+                                    <img src="@products[0].Image10" />
+                                </NavLink>
+                                <h5 class="card-title">@products[0].Name</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">@products[0].Brand</h6>
+                                <hr />
+                                <p>
+                                    Price: <label style="color:darkred">@products[0].Price.ToString("c")</label>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="column card">
+                            <div class="card-body" style="width: 100%;">
+                                <NavLink href="@($"product/{products[1].Id}")">
+                                    <img src="@products[1].Image10" />
+                                </NavLink>
+                                <h5 class="card-title">@products[1].Name</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">@products[1].Brand</h6>
+                                <hr />
+                                <p>
+                                    Price: <label style="color:darkred">@products[1].Price.ToString("c")</label>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="column card">
+                            <div class="card-body" style="width: 100%;">
+                                <NavLink href="@($"product/{products[2].Id}")">
+                                    <img src="@products[2].Image10" />
+                                </NavLink>
+                                <h5 class="card-title">@products[2].Name</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">@products[2].Brand</h6>
+                                <hr />
+                                <p>
+                                    Price: <label style="color:darkred">@products[2].Price.ToString("c")</label>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </card>
+            </div>
+            <div class="item">
+                <card>
+                    <div class="row">
+                        <div class="column card">
+                            <div class="card-body" style="width: 100%;">
+                                <NavLink href="@($"product/{products[1].Id}")">
+                                    <img src="@products[1].Image10" />
+                                </NavLink>
+                                <h5 class="card-title">@products[1].Name</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">@products[1].Brand</h6>
+                                <hr />
+                                <p>
+                                    Price: <label style="color:darkred">@products[1].Price.ToString("c")</label>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="column card">
+                            <div class="card-body" style="width: 100%;">
+                                <NavLink href="@($"product/{products[2].Id}")">
+                                    <img src="@products[2].Image10" />
+                                </NavLink>
+                                <h5 class="card-title">@products[2].Name</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">@products[2].Brand</h6>
+                                <hr />
+                                <p>
+                                    Price: <label style="color:darkred">@products[2].Price.ToString("c")</label>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="column card">
+                            <div class="card-body" style="width: 100%;">
+                                <NavLink href="@($"product/{products[3].Id}")">
+                                    <img src="@products[3].Image10" />
+                                </NavLink>
+                                <h5 class="card-title">@products[3].Name</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">@products[3].Brand</h6>
+                                <hr />
+                                <p>
+                                    Price: <label style="color:darkred">@products[3].Price.ToString("c")</label>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </card>
+            </div>
+            <div class="item">
+                <card>
+                    <div class="row">
+                        <div class="column card">
+                            <div class="card-body" style="width: 100%;">
+                                <NavLink href="@($"product/{products[2].Id}")">
+                                    <img src="@products[2].Image10" />
+                                </NavLink>
+                                <h5 class="card-title">@products[2].Name</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">@products[2].Brand</h6>
+                                <hr />
+                                <p>
+                                    Price: <label style="color:darkred">@products[2].Price.ToString("c")</label>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="column card">
+                            <div class="card-body" style="width: 100%;">
+                                <NavLink href="@($"product/{products[3].Id}")">
+                                    <img src="@products[3].Image10" />
+                                </NavLink>
+                                <h5 class="card-title">@products[3].Name</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">@products[3].Brand</h6>
+                                <hr />
+                                <p>
+                                    Price: <label style="color:darkred">@products[3].Price.ToString("c")</label>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="column card">
+                            <div class="card-body" style="width: 100%;">
+                                <NavLink href="@($"product/{products[4].Id}")">
+                                    <img src="@products[4].Image10" />
+                                </NavLink>
+                                <h5 class="card-title">@products[4].Name</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">@products[4].Brand</h6>
+                                <hr />
+                                <p>
+                                    Price: <label style="color:darkred">@products[4].Price.ToString("c")</label>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </card>
+            </div>
+            <div class="item">
+                <card>
+                    <div class="row">
+                        <div class="column card">
+                            <div class="card-body" style="width: 100%;">
+                                <NavLink href="@($"product/{products[3].Id}")">
+                                    <img src="@products[3].Image10" />
+                                </NavLink>
+                                <h5 class="card-title">@products[3].Name</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">@products[3].Brand</h6>
+                                <hr />
+                                <p>
+                                    Price: <label style="color:darkred">@products[3].Price.ToString("c")</label>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="column card">
+                            <div class="card-body" style="width: 100%;">
+                                <NavLink href="@($"product/{products[4].Id}")">
+                                    <img src="@products[4].Image10" />
+                                </NavLink>
+                                <h5 class="card-title">@products[4].Name</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">@products[4].Brand</h6>
+                                <hr />
+                                <p>
+                                    Price: <label style="color:darkred">@products[4].Price.ToString("c")</label>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="column card">
+                            <div class="card-body" style="width: 100%;">
+                                <NavLink href="@($"product/{products[0].Id}")">
+                                    <img src="@products[0].Image10" />
+                                </NavLink>
+                                <h5 class="card-title">@products[0].Name</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">@products[0].Brand</h6>
+                                <hr />
+                                <p>
+                                    Price: <label style="color:darkred">@products[0].Price.ToString("c")</label>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </card>
+            </div>
+            <div class="item">
+                <card>
+                    <div class="row">
+                        <div class="column card">
+                            <div class="card-body" style="width: 100%;">
+                                <NavLink href="@($"product/{products[4].Id}")">
+                                    <img src="@products[4].Image10" />
+                                </NavLink>
+                                <h5 class="card-title">@products[4].Name</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">@products[4].Brand</h6>
+                                <hr />
+                                <p>
+                                    Price: <label style="color:darkred">@products[4].Price.ToString("c")</label>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="column card">
+                            <div class="card-body" style="width: 100%;">
+                                <NavLink href="@($"product/{products[0].Id}")">
+                                    <img src="@products[0].Image10" />
+                                </NavLink>
+                                <h5 class="card-title">@products[0].Name</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">@products[0].Brand</h6>
+                                <hr />
+                                <p>
+                                    Price: <label style="color:darkred">@products[0].Price.ToString("c")</label>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="column card">
+                            <div class="card-body" style="width: 100%;">
+                                <NavLink href="@($"product/{products[1].Id}")">
+                                    <img src="@products[1].Image10" />
+                                </NavLink>
+                                <h5 class="card-title">@products[1].Name</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">@products[1].Brand</h6>
+                                <hr />
+                                <p>
+                                    Price: <label style="color:darkred">@products[1].Price.ToString("c")</label>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </card>
+            </div>
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>
+
+<CategorySelectorComponent SetCurrentCategory="SetCurrentCategory"></CategorySelectorComponent>
+
+@code {
+    public ShowModel ShowModel = new ShowModel();
+
+    public List<Product> products = new List<Product>();
+
+    private int currentCategory = 7;
+
+    private void SetCurrentCategory(int value)
+    {
+        currentCategory = value;
+
+        for (int i = 0; i < ShowModel.Category.Length; i++)
+        {
+            ShowModel.Category[i] = false;
+        }
+
+        ShowModel.Category[currentCategory] = true;
+        products = productService.GetProducts(ShowModel);
+
+    }
+
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+
+        //// Filter products
+        //ShowModel.Category[7] = false;
+        //ShowModel.Category[3] = true;
+
+        products = productService.GetProducts(ShowModel);
+    }
+
+    List<string>
+    imageList = new List<string>
+        { "/Img/Products/Hats/Hats10.png", "/Img/Products/Kids/Kids10.png", "/Img/Products/Men/Men10.png",
+        "/Img/Products/Shoes/Shoes10.png", "/Img/Products/Sunglasses/Sunglasses10.png", "/Img/Products/Watches/Watches10.png",
+        "/Img/Products/Women/Women10.png" };
+}

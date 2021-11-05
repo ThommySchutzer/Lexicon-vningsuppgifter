@@ -82,6 +82,55 @@ using MongoBlazorServer.Shared;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 11 "D:\Användare\tillt\source\repos\AspNet\MongoBlazorServer\MongoBlazorServer\_Imports.razor"
+using MongoBlazorServer.Data;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 12 "D:\Användare\tillt\source\repos\AspNet\MongoBlazorServer\MongoBlazorServer\_Imports.razor"
+using MongoBlazorServer.IService;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 13 "D:\Användare\tillt\source\repos\AspNet\MongoBlazorServer\MongoBlazorServer\_Imports.razor"
+using MongoBlazorServer.Service;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 14 "D:\Användare\tillt\source\repos\AspNet\MongoBlazorServer\MongoBlazorServer\_Imports.razor"
+using MongoBlazorServer.Components;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 15 "D:\Användare\tillt\source\repos\AspNet\MongoBlazorServer\MongoBlazorServer\_Imports.razor"
+using MongoDB.Bson;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 16 "D:\Användare\tillt\source\repos\AspNet\MongoBlazorServer\MongoBlazorServer\_Imports.razor"
+using MongoDB.Bson.Serialization.Attributes;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 17 "D:\Användare\tillt\source\repos\AspNet\MongoBlazorServer\MongoBlazorServer\_Imports.razor"
+using MongoDB.Bson.Serialization.IdGenerators;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/counter")]
     public partial class Counter : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -91,8 +140,11 @@ using MongoBlazorServer.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 9 "D:\Användare\tillt\source\repos\AspNet\MongoBlazorServer\MongoBlazorServer\Pages\Counter.razor"
+#line 15 "D:\Användare\tillt\source\repos\AspNet\MongoBlazorServer\MongoBlazorServer\Pages\Counter.razor"
        
+    // Local Storage
+    int SessionValue = 0;
+
     private int currentCount = 0;
 
     private void IncrementCount()
@@ -100,9 +152,16 @@ using MongoBlazorServer.Shared;
         currentCount++;
     }
 
+    // Local Storage
+    protected override async Task OnInitializedAsync()
+    {
+        SessionValue = await oLocalStore.GetItemAsync<int>("MySessionValue");
+    }
+
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private Blazored.LocalStorage.ILocalStorageService oLocalStore { get; set; }
     }
 }
 #pragma warning restore 1591

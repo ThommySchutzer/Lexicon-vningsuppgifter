@@ -1,0 +1,102 @@
+﻿@page "/allproducts/"
+
+@inject IProductService productService
+
+<div class="container-fluid" style="margin-bottom:20px;padding:50px 0;background-color:black;color:white;text-align:center;">
+    <h2>Home / Shop</h2>
+</div>
+
+<div class="container">
+    <div class="row">
+        <!-- Side navigation -->
+        <div class="sidenav col-3" style="display:block;">
+            <CategorySelectorComponent SetCurrentCategory="SetCurrentCategory"></CategorySelectorComponent>
+            <hr />
+            <p><strong>Filter by Price</strong></p>
+            <RangeControl @bind-ValueHigh="ShowModel.Price[1]" @bind-ValueLow="ShowModel.Price[0]" MinValue="0" MaxValue="800" Width="200"></RangeControl>
+            <p>
+                Price:
+                <span>@ShowModel.Price[0].ToString("c")</span> - <span>@ShowModel.Price[1].ToString("c")</span>
+                <span style="float:right;"><img src="Icons/Filter btn.png" @onclick="@(e => SetCurrentPriceRange())" /></span>
+            </p>
+        </div>
+
+        <!-- Page content -->
+        <div class="main col-9">
+            <div class="row profile-row" style="margin-left:10px">
+                @foreach (var pro in products)
+                {
+                    <div class="col-4">
+                        <div class="card" style="width: 28rem;">
+                            <div class="card-body">
+                                <NavLink href="@($"product/{pro.Id}")">
+                                    <img src="@pro.Image9" />
+                                </NavLink>
+
+                                <h5 class="card-title">@pro.Name</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">@pro.Brand</h6>
+                                <hr />
+                                <p>
+                                    Price: <label style="color:darkred">@pro.Price.ToString("c")</label>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="row">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+@code {
+    public ShowModel ShowModel = new ShowModel();
+
+    public List<Product> products = new List<Product>();
+
+    private int currentCategory = 7;
+
+    private void SetCurrentCategory(int value)
+    {
+        currentCategory = value;
+
+        for (int i = 0; i < ShowModel.Category.Length; i++)
+        {
+            ShowModel.Category[i] = false;
+        }
+
+        ShowModel.Category[currentCategory] = true;
+        products = productService.GetProducts(ShowModel);
+
+    }
+
+    private void SetCurrentPriceRange()
+    {
+        products = productService.GetProducts(ShowModel);
+    }
+
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+
+        //// Filter products
+        //ShowModel.Category[7] = false;
+        //ShowModel.Category[3] = true;
+
+        products = productService.GetProducts(ShowModel);
+    }
+}
